@@ -21,18 +21,10 @@ query listAll {
     id
     name
     createdAt
-    executions {
-      id
-      name
-      insights {
-        id
-        name
-        data
-        id
-      }
-    }
+    modelCount
   }
 }
+
 `
 
 const GET_WORKFLOWS = queryText

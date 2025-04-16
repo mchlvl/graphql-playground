@@ -51,7 +51,7 @@ npm run dev
 
 
 ## IDE integration
-For frontent checkout https://www.apollographql.com/docs/ide-support/vs-code
+For frontent checkout https://www.apollographql.com/docs/ide-support/vs-code or open https://open-vsx.org/extension/apollographql/vscode-apollo
 
 Example IDE linked to schema via frontend/apollo.config.json
 ```json
