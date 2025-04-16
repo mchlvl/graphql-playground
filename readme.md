@@ -2,6 +2,7 @@
 ## Backend
 
 ```
+cd backend
 python3 -m venv .venv
 source .venv/bin/activate 
 pip install 'strawberry-graphql[fastapi]' asyncpg sqlalchemy databases uvicorn
@@ -12,7 +13,7 @@ python app.py
 navigate to http://localhost:8000/graphql
 
 Setup mock data via mutation
-```
+```graphql
 mutation {
   # dropAllTables # optional
   createAllTables
@@ -20,7 +21,7 @@ mutation {
 }
 ```
 Run any query
-```
+```graphql
 query MyQuery {
   listWorkflows {
     id
@@ -53,7 +54,7 @@ npm run dev
 For frontent checkout https://www.apollographql.com/docs/ide-support/vs-code
 
 Example IDE linked to schema via frontend/apollo.config.json
-```
+```json
 {
     "client": {
       "service": {
@@ -194,7 +195,7 @@ query MyQuery {
 }
 ```
 #### For model v1.2, what execution did it come from and what workflow did it come from?
-```
+```graphql
 query MyQuery {
   listModels (modelVersion:"v1.2") {  # filter
     name
@@ -207,6 +208,36 @@ query MyQuery {
     workflow {  # merged details via execution id, all details of workflow available, including executions, models, etc
       id
     }
+  }
+}
+>> {
+  "data": {
+    "listModels": [
+      {
+        "name": "TinyModel",
+        "modelVersion": "v2.2",
+        "executionId": 1,
+        "execution": {
+          "id": 1,
+          "workflowId": 1
+        },
+        "workflow": {
+          "id": 1
+        }
+      },
+      {
+        "name": "TinyModel",
+        "modelVersion": "v1.2",
+        "executionId": 1,
+        "execution": {
+          "id": 1,
+          "workflowId": 1
+        },
+        "workflow": {
+          "id": 1
+        }
+      }
+    ]
   }
 }
 ```
